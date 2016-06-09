@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="container-fluid login">
+		<div class="main col-lg-12">
+			<div class="tabbable form-login">
+				<ul class="nav nav-tabs tab">
+					<li class="active">
+						<a href="#tab1" data-toggle="tab" class="">LOGIN</a>
+					</li>
+					<li><a href="#tab2" data-toggle="tab" class="">SIGN UP</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active" id="tab1">
+						<br>
+						<h3 class="font text-center">USER LOGIN</h3>
+						<form class="login-form" action="/login" method="post">
+							{% csrf_token %}
+						    {{ loginForm }}
+						    <br>
+						    <input type="submit" value="Log In" id="login-submit"/>
+						    <p id="login-error" class="error"></p>
+						</form>
+					</div>
+					<div class="tab-pane" id="tab2">
+						<br>
+						<h3 class="font text-center">USER SIGN UP</h3>
+						<form class="signup-form" action="/signin" method="post">
+							{% csrf_token %}
+						    {{ loginForm }}
+						    <label>Repeat Password :</label>
+						    <input id="id_repeat_password" maxlength="100" name="repeat_password" type="password">
+						    <button id="show_password">Show Password</button>
+						    <br><br>
+						    <input type="submit" value="Sign Up" id="signup-submit"/>
+						    <p id="signup-error" class="error"></p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
